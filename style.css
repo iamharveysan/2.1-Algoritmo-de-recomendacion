@@ -134,15 +134,18 @@ button {
 }
 
 .pick {
-  background: var(--panel2);
+  background: #111111;
   border: 1px solid var(--border);
   text-align: left;
-  padding: 14px;
+  padding: 16px;
+  color: #ffffff;              /* 🔥 fuerza texto blanco */
 }
 
 .pick:hover {
   border-color: var(--orange);
+  background: #151515;
 }
+
 
 .tag {
   display: inline-block;
