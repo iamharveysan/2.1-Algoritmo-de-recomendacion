@@ -1,3 +1,4 @@
+const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbzaulCBJHaTmYLTY1fdWx7iHhXVvMCFRW5G7i1Vse0cqzm_JHZtPeTo48oeKPgDALZ_/exec";
 // =====================
 // 1) Datos (Cursos)
 // =====================
@@ -201,6 +202,21 @@ function vote(winner) { // "A" o "B"
 
   const ganador = (winner === "A") ? currentA : currentB;
   const perdedor = (winner === "A") ? currentB : currentA;
+  // ✅ Enviar voto a Google Sheets (base central)
+fetch(SHEETS_API_URL, {
+  method: "POST",
+  mode: "no-cors", // 👈 clave para GitHub Pages + Apps Script
+  headers: { "Content-Type": "text/plain;charset=utf-8" }, // 👈 evita problemas de preflight
+  body: JSON.stringify({
+    segmento: segmentos[seg],
+    contexto: contextos[ctx],
+    cursoA: currentA,
+    cursoB: currentB,
+    ganador: ganador,
+    perdedor: perdedor
+  })
+}).catch(err => console.error("Error enviando a Sheets:", err));
+
 
   state.votes.push({
     ts: new Date().toISOString(),
