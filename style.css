@@ -10,6 +10,8 @@
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
 }
 
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   background: var(--bg);
@@ -53,6 +55,7 @@ h1 {
   padding: 14px;
 }
 
+/* ===== Formularios ===== */
 label {
   display: block;
   margin-top: 10px;
@@ -82,12 +85,13 @@ select:focus {
   margin-top: 12px;
 }
 
+/* ===== Botones ===== */
 button {
   cursor: pointer;
   border: 0;
   border-radius: 12px;
   padding: 10px 12px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .primary {
@@ -114,14 +118,17 @@ button {
   color: var(--text);
 }
 
+/* ===== Pregunta ===== */
 .question {
   background: var(--panel2);
   border: 1px solid var(--border);
-  padding: 10px;
+  padding: 12px;
   border-radius: 12px;
   color: var(--text);
+  line-height: 1.35;
 }
 
+/* ===== Duelo A/B ===== */
 .duel {
   display: grid;
   grid-template-columns: 1fr;
@@ -133,12 +140,13 @@ button {
   .duel { grid-template-columns: 1fr 1fr; }
 }
 
+/* Botón de elección (aquí estaba el problema de contraste) */
 .pick {
   background: #111111;
   border: 1px solid var(--border);
   text-align: left;
   padding: 16px;
-  color: #ffffff;              /* 🔥 fuerza texto blanco */
+  color: #ffffff; /* fuerza texto blanco */
 }
 
 .pick:hover {
@@ -146,24 +154,32 @@ button {
   background: #151515;
 }
 
-
+/* Etiqueta A/B */
 .tag {
   display: inline-block;
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
   text-align: center;
-  line-height: 26px;
+  line-height: 28px;
   margin-right: 10px;
   background: var(--orange);
-  color: var(--bg);
+  color: #000000;
   font-weight: 900;
 }
 
+/* Texto del curso (más visible y con jerarquía) */
+.pick .title,
 .title {
+  color: #ffffff;         /* 🔥 asegura blanco */
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
   vertical-align: middle;
+  text-shadow: 0 1px 0 rgba(0,0,0,.35); /* ayuda a leer en pantallas */
 }
 
+/* ===== Ranking ===== */
 .topbox {
   background: var(--panel2);
   border: 1px solid var(--border);
@@ -175,7 +191,8 @@ button {
 .toprow {
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  gap: 12px;
+  padding: 9px 8px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -190,3 +207,4 @@ button {
   color: var(--muted);
   padding-bottom: 28px;
 }
+
